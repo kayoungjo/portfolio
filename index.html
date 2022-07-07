@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>마우스오버효과(1)</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="contents">
+        <p>오늘은 <em>식목일</em> 다음날입니다.나무를 많이 심어야됩니다.</p>
+        <p><em>식목일</em>날 봉화에서 또 다시 <em>산불</em>이 났습니다. <em>산불</em>조심합시다.</p>
+    </div>
+    
+    <div class="left">
+        <h1>마우스 오버효과1</h1>
+        <p>마우스 따라다니기</p>
+    </div>
+    <div class="bottom">
+        <ul>
+            <li>clientX : <span class="clientX">0</span></li>
+            <li>clientY : <span class="clientY">0</span></li>
+            <li>pageX : <span class="pageX">0</span></li>
+            <li>pageY : <span class="pageY">0</span></li>
+        </ul>
+    </div>
+
+
+<script>
+
+    //자바스크립트 사용
+    
+    //마우스 따라다니기
+    window.addEventListener("mousemove",function(e){
+        
+        let x=e.clientX-25+"px";
+        let y=e.clientY-25+"px";
+        document.querySelector(".cursor").style.cssText="left :" + x + "; top :" + y;
+        //style.cssText : 요소에 설정된 모든 인라인 css 속성값을 텍스트로 가져오거나 설정할때 사용
+        
+        document.querySelectorAll(".contents em").forEach(function(e){
+            
+            e.addEventListener("mouseenter",function(){
+                document.querySelector(".cursor").classList.add("active");
+            });
+            
+            e.addEventListener("mouseleave",()=>{
+                document.querySelector(".cursor").classList.remove("active");
+            });
+            
+        });
+        
+        
+        
+        
+//        document.querySelector(".cursor").style.left=e.clientX-25+"px";
+//        document.querySelector(".cursor").style.top=e.clientY-25+"px";
+        
+//        document.querySelector(".contents em").addEventListener("mouseenter",function(){
+//            document.querySelector(".cursor").classList.add("active");
+//        });
+//        
+//        document.querySelector(".contents em").addEventListener("mouseleave",function(){
+//            document.querySelector(".cursor").classList.remove("active");
+//        });
+        
+        
+//        document.querySelector(".contents em").style.color="#f00";
+//        document.querySelectorAll(".contents em").style.color="#f00";
+        
+//        let em=document.querySelectorAll(".contents em");
+//        for(var i=0; i<em.length; i++){
+//            em[i].style.color="red";
+//        }
+        
+//        document.querySelectorAll(".contents em").forEach(function(e){
+//            e.style.color="red";
+//        });
+        
+        
+    });
+    
+    
+    
+    
+    
+    
+    //좌표
+    window.addEventListener("mousemove",function(e){
+        
+        document.querySelector(".clientX").innerHTML=e.clientX;
+        document.querySelector(".clientY").innerHTML=e.clientY;
+        document.querySelector(".pageX").innerHTML=e.pageX;
+        document.querySelector(".pageY").innerHTML=e.pageY;
+        
+        
+    });
+    
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!--제이쿼리 사용-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+
+<!--<script>
+    
+    //마우스 이동
+    $(window).mousemove(function(e){
+        
+        $(".cursor").css({left:e.clientX-25, top:e.clientY-25});
+        $(".contents em").hover(function(){
+            $(".cursor").addClass("active");
+        }, function(){
+            $(".cursor").removeClass("active");
+        });
+    });
+
+    //좌표
+    $(window).mousemove(function(e){
+        $(".clientX").text(e.clientX);
+        $(".clientY").text(e.clientY);
+        $(".pageX").text(e.pageX);
+        $(".pageY").text(e.pageY);
+    });
+    
+</script>-->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
